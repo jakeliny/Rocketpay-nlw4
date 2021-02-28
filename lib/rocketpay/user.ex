@@ -3,6 +3,7 @@ defmodule Rocketpay.User  do
 use Ecto.Schema
 import Ecto.Changeset
 
+alias Rocketpay.Account
 alias Ecto.Changeset
 
 #setando que ira ter um UUID para cada campo
@@ -17,6 +18,7 @@ alias Ecto.Changeset
     field :password, :string, virtual: true
     field :password_hash, :string
     field :nickname, :string
+    has_one :account, Account #tem um account
     timestamps()
   end
 

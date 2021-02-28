@@ -4,7 +4,6 @@ defmodule Rocketpay.Repo.Migrations.CreateUserTable do
   # o que é colocado dentro do change ja deixa pronto para
   # criar e tbm para dar rollback
   def change do
-    drop table :users
     create table :users do
       add :name, :string
       add :age, :integer
