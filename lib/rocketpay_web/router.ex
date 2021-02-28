@@ -13,6 +13,8 @@ defmodule RocketpayWeb.Router do
     # sendo /api/ do tipo get no controller WelcomeController na action Index
 
     get "/:filename", WelcomeController, :sumFile
+
+    post "/users", UsersController, :create
   end
 
   # Enables LiveDashboard only for development

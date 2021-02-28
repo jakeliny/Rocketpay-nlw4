@@ -1,5 +1,5 @@
 defmodule Rocketpay.Users.Create do
-  alias Rockeatpay.{Repo, User}
+  alias Rocketpay.{Repo, User}
 
   def call(params) do
     params

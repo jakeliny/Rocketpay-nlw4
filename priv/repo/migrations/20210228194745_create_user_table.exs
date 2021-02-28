@@ -4,9 +4,10 @@ defmodule Rocketpay.Repo.Migrations.CreateUserTable do
   # o que é colocado dentro do change ja deixa pronto para
   # criar e tbm para dar rollback
   def change do
+    drop table :users
     create table :users do
-      add :nome, :string
-      add :agr, :integer
+      add :name, :string
+      add :age, :integer
       add :email, :string
       add :password_hash, :string
       add :nickname, :string
@@ -19,4 +20,8 @@ defmodule Rocketpay.Repo.Migrations.CreateUserTable do
     create unique_index(:users, [:nickname])
 
   end
+
+  # def up do
+  #   drop table :users
+  # end
 end
