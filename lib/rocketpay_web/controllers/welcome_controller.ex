@@ -18,9 +18,9 @@ defmodule RocketpayWeb.WelcomeController do
     text(conn, "Hello Word")
   end
 
-  #Pegando filename que vem na rota e por pattern match
-  #estou falando que se existir um paremetro filename
-  #ele vai atribuir a uma variavell chamada filenameParam
+    #Pegando filename que vem na rota e por pattern match
+    #estou falando que se existir um paremetro filename
+    #ele vai atribuir a uma variavell chamada filenameParam
   def sumFile(conn, %{"filename" => filenameParam}) do
     filenameParam
     |> Numbers.sum_from_file()
