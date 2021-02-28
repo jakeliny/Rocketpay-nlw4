@@ -16,6 +16,9 @@ defmodule Rocketpay.Account do
     timestamps()
   end
 
+  # %__MODULE__{} = struct vazia
+  # estamos passando a struct que ja tem dados ou struct vazia
+  # caso a struct náo tenha valores
   def changeset(struct \\ %__MODULE__{}, params) do
     struct
     |> cast(params, @required_params)
