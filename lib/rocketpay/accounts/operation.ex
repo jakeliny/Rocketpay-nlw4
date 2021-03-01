@@ -1,6 +1,6 @@
 defmodule Rocketpay.Accounts.Operation do
-  alias Ecto.Multi
 
+  alias Ecto.Multi
   alias Rocketpay.{Account, Repo}
 
   def call(%{"id" => id, "value" => value}, operation) do
@@ -8,8 +8,8 @@ defmodule Rocketpay.Accounts.Operation do
 
     Multi.new()
     |> Multi.run(operation_name, fn repo, _changes -> get_account(repo, id) end)
-    |> Multi.run(operation, fn repo, changes ->
-      account = Map.get(changes, operation_name)
+    #map.get pega uma posição detro de uma lista, que foi criada no operation_name
+    |> Multi.run(operation, fn repo, changes -> account = Map.get(changes, operation_name)
 
       #para atualizar o saldo da conta
       update_balance(repo, account, value, operation)
@@ -44,6 +44,7 @@ defmodule Rocketpay.Accounts.Operation do
   defp handle_cast({:ok, value}, balance, :deposit), do: Decimal.add(balance, value)
 
   #se é uma retirada, subtrai o valor do balance com o valor que veio
+  #não preciso me preocupar com ele sendo negativo por causa daquela constraint
   defp handle_cast({:ok, value}, balance, :withdraw), do: Decimal.sub(balance, value)
 
   #se der erro, retorna valor de deposito invalido
